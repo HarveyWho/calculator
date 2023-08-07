@@ -32,6 +32,11 @@ body {
     justify-content: space-between;
 }
 
+#clear, #delete {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 button {
     width: 70px;
     height: 70px;
@@ -40,13 +45,19 @@ button {
     margin-bottom: 10px;
     font-size: 24px;
     cursor: pointer;
+    background-color: #f3f3f3;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+button:active {
+    background-color: #bdbdbd;
 }
 
 #clear, #delete {
     width: 100%;
     margin-bottom: 20px;
-}
-
-button:active {
-    opacity: 0.7;
 }
