@@ -27,12 +27,21 @@ window.onload = function() {
 
     function appendNumber(number) {
         if (displayValue.includes('.') && number === '.') return;
-        displayValue += number;
+        
+        if (displayValue === '0' && number !== '.') {
+            displayValue = number;
+        } else {
+            displayValue += number;
+        }
+        
         currentValue.textContent = displayValue;
-        fullInput.textContent += number;
+        updateFullInput();
     }
     
-
+    function updateFullInput() {
+        fullInput.textContent = `${firstValue} ${currentOperator ? currentOperator : ''} ${displayValue}`;
+    }
+        
     function chooseOperator(operator) {
         if (displayValue === '') return;
         if (firstValue !== '') calculate();
