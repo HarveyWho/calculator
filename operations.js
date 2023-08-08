@@ -75,4 +75,5 @@ window.onload = function() {
         displayValue = displayValue.slice(0, -1);
         display.textContent = displayValue;
     }
+    
 }
