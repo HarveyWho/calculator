@@ -1,5 +1,7 @@
 window.onload = function() {
-    const display = document.getElementById('display');
+    const fullInput = document.getElementById('full-input');
+    const currentValue = document.getElementById('current-value');
+
     let displayValue = '';
     let firstValue = '';
     let secondValue = '';
@@ -26,8 +28,10 @@ window.onload = function() {
     function appendNumber(number) {
         if (displayValue.includes('.') && number === '.') return;
         displayValue += number;
-        display.textContent = displayValue;
+        currentValue.textContent = displayValue;
+        fullInput.textContent += number;
     }
+    
 
     function chooseOperator(operator) {
         if (displayValue === '') return;
@@ -35,13 +39,15 @@ window.onload = function() {
         firstValue = displayValue;
         currentOperator = operator;
         displayValue = '';
+        fullInput.textContent += ` ${operator} `;
     }
+    
 
     function calculate() {
         if (firstValue === '' || currentOperator === null) return;
         secondValue = displayValue;
-        display.textContent = operate(currentOperator, firstValue, secondValue);
-        displayValue = display.textContent;
+        currentValue.textContent = operate(currentOperator, firstValue, secondValue);
+        displayValue = currentValue.textContent;
         firstValue = '';
         secondValue = '';
         currentOperator = null;
@@ -68,12 +74,13 @@ window.onload = function() {
         firstValue = '';
         secondValue = '';
         currentOperator = null;
-        display.textContent = '0';
-    }
+        currentValue.textContent = '0';
+        fullInput.textContent = '0';
+    }    
 
     function deleteNumber() {
         displayValue = displayValue.slice(0, -1);
-        display.textContent = displayValue;
+        currentValue.textContent = displayValue;
     }
     
 }
